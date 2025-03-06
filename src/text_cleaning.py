@@ -34,7 +34,7 @@ def process_json(input_path, output_path):
         input_data = json.load(file)
 
     df = pd.DataFrame(input_data)
-    df = df[['title', 'link', 'date', 'content']]
+    df = df[['title', 'link', 'date', 'content','source']].sort_values(by=["date"])
     df["date"] = pd.to_datetime(df["date"])
     df['quarter'] = df["date"].dt.to_period("Q").astype(str)
     df["date"] = df["date"].dt.strftime("%Y-%m-%d")
@@ -57,7 +57,10 @@ def process_json(input_path, output_path):
         json.dump(output_data, f, ensure_ascii=False, indent=4)
 
 
-input_path="../data/final_raw.json"
-output_path="../data/final.json"
+# input_path="../data/final_raw.json"
+# output_path="../data/final.json"
+
+input_path="./0227_marged1.json"
+output_path="./cleaned_marged.json"
 
 process_json(input_path, output_path)
