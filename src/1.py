@@ -23,7 +23,7 @@ def group_titles_by_prefix(data, prefix_length=5):
     return {key: values for key, values in title_groups.items() if len(values) > 1}
 
 # JSON 파일 경로 설정
-file_path = "0227_marged1.json"
+file_path = "./cleaned_marged.json"
 
 # JSON 데이터 불러오기
 data = load_json(file_path)

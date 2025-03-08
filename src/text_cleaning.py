@@ -17,7 +17,7 @@ def clean_text(text):
         text = re.sub(pattern, "", text)
 
     # 특수 문자 및 공백 정리 (단, 구두점 `。！？`는 유지)
-    text = re.sub(r'[^\w\s。！？]', '', text)  # 한자, 숫자, 구두점 외 제거
+    #text = re.sub(r'[^\w\s。！？]', '', text)  # 한자, 숫자, 구두점 외 제거
     text = re.sub(r'\s+', ' ', text).strip()  # 공백 정리
     return text
 
@@ -57,10 +57,10 @@ def process_json(input_path, output_path):
         json.dump(output_data, f, ensure_ascii=False, indent=4)
 
 
-# input_path="../data/final_raw.json"
-# output_path="../data/final.json"
+input_path="../data/final_raw.json"
+output_path="../data/0306/final.json"
 
-input_path="./0227_marged1.json"
-output_path="./cleaned_marged.json"
+# input_path="./0227_marged1.json"
+# output_path="./cleaned_marged.json"
 
 process_json(input_path, output_path)
