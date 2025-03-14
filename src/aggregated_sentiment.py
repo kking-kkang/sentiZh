@@ -14,7 +14,16 @@ for article in data:
 
     if avg_sentiment is not None:
         if base_title not in aggregated_data:
-            aggregated_data[base_title] = {"total_sentiment": 0, "count": 0}
+            # 기존 컬럼을 유지한 채 초기화
+            aggregated_data[base_title] = {
+                "total_sentiment": 0,
+                "count": 0,
+                "link": article["link"],
+                "date": article["date"],
+                "source": article["source"],
+                "quarter": article["quarter"],
+                "cleaned_content": article["cleaned_content"],  # 전체 기사 내용 포함
+            }
 
         aggregated_data[base_title]["total_sentiment"] += avg_sentiment
         aggregated_data[base_title]["count"] += 1
@@ -23,11 +32,17 @@ for article in data:
 final_results = []
 for title, values in aggregated_data.items():
     avg_score = values["total_sentiment"] / values["count"]
-    final_results.append({"title": title, "avg_sentiment_score": avg_score})
+    final_results.append({
+        "title": title,
+        "avg_sentiment_score": avg_score,
+        "link": values["link"],
+        "date": values["date"],
+        "source": values["source"],
+        "quarter": values["quarter"],
+        "cleaned_content": values["cleaned_content"]
+    })
 
 # DataFrame 변환 및 저장
-df_results = pd.DataFrame(final_results)
-df_results.to_csv("aggregated_sentiment_scores.csv", index=False, encoding="utf-8")
 
-# 출력
-print(df_results)
+with open("../data/0310/results/2016_avg.json", "w", encoding="utf-8") as f:
+    json.dump(final_results, f, ensure_ascii=False, indent=4)
