@@ -78,10 +78,10 @@ def split_json_by_year(input_path: str, output_dir: str) -> List[str]:
 
 
 # 함수 실행 (60개 기준으로 나누고 60 언더 data만 연도별 분리)
-input_file = "../data/final.json"
-output_file_over60 = "../data/60/split_over60.json"
-output_file_under60 = "../data/60/split_under60.json"
-output_directory = "../data/60/split_by_year"
+input_file = "../data/final_0307.json"
+output_file_over10 = "../data/0310/10/split_over10.json"
+output_file_under10 = "../data/0310/10/split_under10.json"
+output_directory = "../data/0310/10/split_by_year"
 
-split_json_by_sentence_count(input_file, output_file_over60, output_file_under60)
-split_json_by_year(output_file_under60, output_directory)
+split_json_by_sentence_count(input_file, output_file_over10, output_file_under10,10)
+split_json_by_year(output_file_over10, output_directory)
