@@ -82,6 +82,8 @@ input_file = "../data/final_0307.json"
 output_file_over10 = "../data/0310/10/split_over10.json"
 output_file_under10 = "../data/0310/10/split_under10.json"
 output_directory = "../data/0310/10/split_by_year"
+a = "../data/title/tokenized_data_제거3.json"
+b ="../data/title"
 
-split_json_by_sentence_count(input_file, output_file_over10, output_file_under10,10)
-split_json_by_year(output_file_over10, output_directory)
+#split_json_by_sentence_count(input_file, output_file_over10, output_file_under10,10)
+split_json_by_year(a, b)
